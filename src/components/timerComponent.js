@@ -25,7 +25,13 @@ const setCounter = (element, onFinish) => {
 };
 
 const appendTimer = (seconds) => {
+  // second turn in percentage
+  // 100% = 20 seconds
+  const percentage = (seconds / TIMER_SECONDS) * 100;
+
   return String.raw`
-    <h1>${seconds} </h1>
+  <div class="meter orange nostripes">
+	<span style="width: ${percentage}%"></span>
+</div>
   `;
 };

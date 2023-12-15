@@ -1,10 +1,18 @@
+/************************* Mobile First *************************
+* we are using mobile first approach
+* so we will define the styles for mobile first
+* and then we will add media queries for desktop view
+**************************************************************/
+
 /************************* Variables *************************/
-// all the global variables are defined here
-$correct: green;
-$green-shadow: rgb(156, 245, 156);
-$wrong: red;
-$red-shadow: rgb(253, 154, 154);
-/************************* Variables *************************/
+$correct: #0b6e4f;
+$primary: rgba(38, 147, 242, 1);
+$primary-light: rgba(33, 162, 242, 1);
+$primary-dark: rgba(33, 183, 242, 1);
+$secondary: rgba(12, 12, 12, 1);
+$tertiary: rgba(63, 61, 62, 1);
+$white: #e0e0e2;
+$wrong: #721817;
 
 /************************* Global *************************/
 * {
@@ -13,14 +21,34 @@ $red-shadow: rgb(253, 154, 154);
   box-sizing: border-box;
 }
 
+body {
+  font-family: 'Roboto', sans-serif;
+  color: $white;
+  font-size: 1rem;
+  background-color: $secondary;
+}
+
 .centered {
   position: fixed;
-  width: 80%;
-  max-width: 900px;
+  width: 95%;
+  height: 70%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+  border-radius: 10px;
+  background-color: $tertiary;
+  padding: 1rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  padding: 1rem;
+  border: 1px solid $white;
 }
 
 .scrollable {
@@ -28,19 +56,19 @@ $red-shadow: rgb(253, 154, 154);
   max-height: 80vh;
   overflow: auto;
 }
-h1 {
+
+h1,
+.question {
   font-size: 2rem;
   margin: 1rem;
 }
 
 .correct {
-  border: 2px solid $correct;
-  box-shadow: 0 0 2px 1px $green-shadow;
+  border: 2px solid green !important;
 }
 
 .wrong {
   border: 2px solid $wrong;
-  box-shadow: 0 0 2px 1px $red-shadow;
 }
 
 /************************* Desktop View *************************/
@@ -52,10 +80,35 @@ ul {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   li {
     padding: 1rem;
-    border: 1px solid black;
-    border-radius: 5px;
+    border: 1px solid rgb(28, 28, 28);
+    border: 2px solid $correct;
   }
-  li:hover {
+}
+
+.wrong {
+  border: 2px solid $wrong;
+}
+
+/************************* mobile View *************************
+* Mobile first approach 
+* we must remove ul and li styles in production because we are using classes
+************************* Mobile max@767px *************************/
+
+ul,
+.answerList {
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: 1fr;
+  li,
+  .answerList__item {
+    padding: 0.5rem;
+    border: 1px solid $secondary;
+    border-radius: 5px;
+    text-align: left;
+  }
+  li:hover,
+  .answerList__item:hover {
     cursor: pointer;
     opacity: 0.5;
   }
@@ -64,23 +117,72 @@ ul {
 button {
   padding: 0.5rem;
   margin: 0.5rem;
-  border: 1px solid black;
-  border-radius: 5px;
-  background-color: white;
+  font-size: 1rem;
+  border: 0.1rem solid $white;
+  border-radius: 0.5rem;
+  background-color: $primary;
+  color: $white;
   &:hover {
     cursor: pointer;
     opacity: 0.5;
   }
 }
 
-/************************* Mobile max@768px *************************/
-@media (max-width: 768px) {
-  .centered {
-    width: 90%;
+/************************* Timer Component *************************
+* timer component styles
+* create a progress bar with css
+* https://css-tricks.com/css3-progress-bars/
+* progress bar must act like a timer with 20 seconds
+
+********************************************************************/
+
+.meter {
+  box-sizing: content-box;
+  height: 20px; /* Can be anything */
+  position: absolute;
+  width: 90%;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #555;
+  border-radius: 25px;
+  padding: 10px;
+  box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+}
+.meter > span {
+  display: block;
+  height: 100%;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: rgb(43, 194, 83);
+  background-image: linear-gradient(
+    center bottom,
+    rgb(43, 194, 83) 37%,
+    rgb(84, 240, 84) 69%
+  );
+  box-shadow: inset 0 2px 9px rgba(255, 255, 255, 0.3),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.animate > span:after {
+  display: none;
+}
+
+@keyframes move {
+  0% {
+    background-position: 0 1;
   }
-  ul {
-    li {
-      padding: 0.5rem;
-    }
+  100% {
+    background-position: 50px 50px;
   }
 }
+
+.orange > span {
+  background-image: linear-gradient(#f1a165, #f36d0a);
+}
+
+/************************* Desktop min@768px *************************/
