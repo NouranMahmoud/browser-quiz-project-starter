@@ -30,7 +30,7 @@ const appendTimer = (seconds) => {
   const percentage = (seconds / TIMER_SECONDS) * 100;
 
   return String.raw`
-  <div class="meter orange nostripes">
+  <div class="statusbar orange">
 	<span style="width: ${percentage}%"></span>
 </div>
   `;
