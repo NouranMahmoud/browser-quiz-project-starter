@@ -9,7 +9,7 @@ export const createResultComponent = () => {
   element.classList.add('card');
 
   element.innerHTML = String.raw`
-    <h1 class='score'>Your Score is: <br/> <span id="totalScore">${quizData.totalScore} / 100</span></h1>
+    <h1 class='score'>Your Score is: <br/> <span id="totalScore">${quizData.totalScore} / 10</span></h1>
     <div id="evaluation">
     <h1 class='finalMessage'>" ${evaluation} "</h1>
     </div>

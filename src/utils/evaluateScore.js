@@ -5,44 +5,44 @@ export const evaluateScore = (score) => {
       evaluation = 'Knock! knock! knock! are you there?';
       break;
     }
-    case 10: {
+    case 1: {
       evaluation =
         "Ops! Something is wrong, but don't worry, you'll get there.";
       break;
     }
-    case 20: {
+    case 2: {
       evaluation = 'A little room for improvement, keep going!';
       break;
     }
-    case 30: {
+    case 3: {
       evaluation = "Nice try! You're on the right track.";
       break;
     }
-    case 40: {
+    case 4: {
       evaluation = 'Good effort! Keep pushing for excellence.';
       break;
     }
-    case 50: {
+    case 5: {
       evaluation = "Not bad at all! You're making progress.";
       break;
     }
-    case 60: {
+    case 6: {
       evaluation = "Well done! You're getting the hang of it.";
       break;
     }
-    case 70: {
+    case 7: {
       evaluation = "Impressive! You're really mastering this.";
       break;
     }
-    case 80: {
+    case 8: {
       evaluation = "Fantastic! You're almost there, keep it up!";
       break;
     }
-    case 90: {
+    case 9: {
       evaluation = "Amazing! You're a quiz whiz!";
       break;
     }
-    case 100: {
+    case 10: {
       evaluation = "Wow! You're crushing it! You're a true quiz master!";
       break;
     }
